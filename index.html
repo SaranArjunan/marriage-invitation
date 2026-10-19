@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nithish &amp; Brundha · Wedding Reception</title>
+<meta name="description" content="V.R. Nithish & A. Brundha invite you to their Wedding Reception · 19 November 2026 · Sri Kumar Mahal, Vijayamangalam.">
+<meta name="theme-color" content="#41164a">
+
+<!-- Link preview for WhatsApp / Facebook. After hosting, replace preview.png with the FULL url, e.g. https://your-site.netlify.app/preview.png -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nithish & Brundha · Wedding Reception">
+<meta property="og:description" content="19 November 2026 · 6 PM to 9 PM · Sri Kumar Mahal, Vijayamangalam. Tap to open your invitation.">
+<meta property="og:image" content="preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%23d81b60'/><circle cx='32' cy='32' r='19' fill='%23ff9f1c'/><circle cx='32' cy='32' r='9' fill='%23ffc300'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Yeseva+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+
+<!-- 3D world (Three.js) sits behind everything -->
+<canvas id="world" aria-hidden="true"></canvas>
+
+<!-- ============ OPENING ============ -->
+<div id="gate" role="button" tabindex="0" aria-label="Tap to open the invitation">
+  <div class="panel gate-panel">
+    <div class="band"></div>
+    <div class="panel-body">
+      <p class="kicker">The Wedding Reception of</p>
+      <p class="gate-names">Nithish <span>&amp;</span> Brundha</p>
+      <p class="gate-date">Thursday · 19 November 2026</p>
+      <p class="gate-tap"><span class="tap-dot"></span>Tap to open the doors</p>
+    </div>
+  </div>
+</div>
+
+<button id="sound" class="sound" aria-label="Mute music" hidden>
+  <svg viewBox="0 0 24 24" class="on"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  <svg viewBox="0 0 24 24" class="off"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9l5 6M21 9l-5 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+</button>
+
+<main id="film">
+
+  <!-- ============ 1. NAMES ============ -->
+  <section class="scene hero">
+    <div class="panel hero-panel seq">
+      <div class="band"></div>
+      <div class="panel-body">
+        <p class="kicker">With the blessings of our elders</p>
+        <p class="lead">we joyfully invite you to the Wedding Reception of</p>
+        <h1 class="names">
+          <span>V.R. Nithish</span>
+          <em>&amp;</em>
+          <span>A. Brundha</span>
+        </h1>
+        <div class="date-strip">
+          <span>Thursday</span>
+          <b>19 Nov 2026</b>
+          <span>6 – 9 PM</span>
+        </div>
+      </div>
+    </div>
+    <p class="scroll-hint seq">Scroll to walk in</p>
+  </section>
+
+  <!-- ============ 2. CELEBRATIONS ============ -->
+  <section class="scene events" id="celebrations">
+    <div class="cards">
+      <article class="panel card reveal">
+        <div class="band"></div>
+        <div class="panel-body">
+          <p class="kicker">Thursday</p>
+          <p class="card-date"><b>19</b><span>November 2026</span></p>
+          <h3 class="ribbon r-magenta">Wedding Reception</h3>
+          <p class="card-time">6:00 PM – 9:00 PM</p>
+          <p class="card-note">Dinner, music &amp; blessings for the couple</p>
+          <div class="cal">
+            <a data-cal="reception-g" target="_blank" rel="noopener">Google Calendar</a>
+            <a data-cal="reception-ics" href="#">Apple / Outlook</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel card reveal">
+        <div class="band band-green"></div>
+        <div class="panel-body">
+          <p class="kicker">Friday</p>
+          <p class="card-date"><b>20</b><span>November 2026</span></p>
+          <h3 class="ribbon r-green">Muhurtham</h3>
+          <!-- EDIT: replace with the muhurtham time, e.g. 6:00 AM – 7:30 AM -->
+          <p class="card-time">Auspicious morning muhurtham</p>
+          <p class="card-note">The sacred wedding ceremony</p>
+          <div class="cal">
+            <a data-cal="wedding-g" target="_blank" rel="noopener">Google Calendar</a>
+            <a data-cal="wedding-ics" href="#">Apple / Outlook</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 3. COUNTDOWN ============ -->
+  <section class="scene countdown">
+    <div class="panel count-panel reveal">
+      <div class="band band-orange"></div>
+      <div class="panel-body">
+        <p class="kicker">The celebrations begin in</p>
+        <div class="clock" id="clock">
+          <div class="c1"><b data-u="d">00</b><span>Days</span></div>
+          <div class="c2"><b data-u="h">00</b><span>Hours</span></div>
+          <div class="c3"><b data-u="m">00</b><span>Minutes</span></div>
+          <div class="c4"><b data-u="s">00</b><span>Seconds</span></div>
+        </div>
+        <p class="clock-done" hidden>The celebrations have begun. Come, bless the couple!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. VENUE ============ -->
+  <section class="scene venue">
+    <div class="panel venue-panel reveal">
+      <div class="band band-purple"></div>
+      <div class="panel-body">
+        <p class="kicker">Venue</p>
+        <h2>Sri Kumar Mahal</h2>
+        <p class="venue-place">Vijayamangalam, Tamil Nadu</p>
+        <div class="map">
+          <iframe title="Map to Sri Kumar Mahal, Vijayamangalam" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Sri%20Kumar%20Mahal%2C%20Vijayamangalam&amp;z=15&amp;output=embed"></iframe>
+        </div>
+        <a class="btn" href="https://maps.app.goo.gl/HsPNduKvxZPVtxWh6" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Get Directions
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. CLOSING ============ -->
+  <section class="scene closing">
+    <div class="panel closing-panel reveal">
+      <div class="band"></div>
+      <div class="panel-body">
+        <p class="closing-line">Your presence and blessings are the greatest gift we could ask for.</p>
+
+        <!-- EDIT (optional): uncomment and add family names
+        <div class="families">
+          <div><p class="kicker">Groom's parents</p><p class="fam">Mr. ______ &amp; Mrs. ______</p></div>
+          <div><p class="kicker">Bride's parents</p><p class="fam">Mr. ______ &amp; Mrs. ______</p></div>
+        </div>
+        -->
+
+        <p class="kicker compliments">With best compliments from</p>
+        <p class="fam">Relatives &amp; Friends</p>
+        <p class="closing-names">Nithish &amp; Brundha</p>
+        <button class="btn" id="share">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16a3 3 0 0 0-2.4 1.2l-6.7-3.4a3 3 0 0 0 0-1.6l6.7-3.4A3 3 0 1 0 15 7l-6.7 3.4a3 3 0 1 0 0 3.2L15 17a3 3 0 1 0 3-1z"/></svg>
+          Share this invitation
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="scene.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
